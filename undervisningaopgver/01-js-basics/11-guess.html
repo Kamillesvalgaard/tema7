@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-js-basics</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <input type="number" id="guess">
+    <button>Guess</button>
+
+
+    <script>
+        const randomNr = Math.round(Math.random() * 20);
+        console.log(`Mit randomNr ${randomNr}`);
+        let userGuess;
+        let tries = 0;
+
+        document.querySelector("button").addEventListener("click", clickedButton);
+
+        function clickedButton() {
+
+            userGuess = document.querySelector("#guess").value;
+
+            if (userGuess < randomNr) {
+                console.log("Tallet er for lavt");
+            } else if (userGuess > randomNr) {
+                console.log("Tallet er for højt");
+            } else {
+                console.log("Tallet er rigtigt");
+            }
+
+            tries++;
+
+            console.log(`Du har brugt ${tries} forsøg`);
+
+        }
+
+    </script>
+</body>
+
+</html>
