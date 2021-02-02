@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-struktur</title>
+</head>
+
+<body>
+
+    <h1>Playliste</h1>
+    <ul id="display"></ul>
+
+    <script>
+        const playliste = ["Der", "er", "nu", "lige", "ti", "forskellige", "sange", "på", "min", "playliste"];
+        console.log(playliste.length);
+
+
+        let ul = document.createElement("ul");
+        document.querySelector("#display").appendChild(ul);
+
+        playliste.forEach(function(playliste) {
+            let li = document.createElement("li");
+            ul.appendChild(li);
+            li.innerHTML += playliste;
+        });
+
+    </script>
+</body>
+
+</html>
