@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-js-basics</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <div>
+        <p>Din alder</p>
+        <input type="number" id="dinAlder">
+        <p>Din dates alder</p>
+        <input type="number" id="dinDate">
+        <button>Går det?</button>
+    </div>
+
+
+
+    <script>
+        let dinAlder;
+        let dinDate;
+        let minimumAlder;
+        let maximumAlder;
+
+
+        document.querySelector("button").addEventListener("click", clickedButton);
+
+
+        function clickedButton() {
+            dinAlder = document.querySelector("#dinAlder").value;
+            dinDate = document.querySelector("#dinDate").value;
+            // Hvad er det yngste din date må være?
+            minimumAlder = Math.round(dinAlder / 2 + 7);
+            console.log("minimumAlder", minimumAlder);
+            //Hvad er det ældste din date må være?
+            maximumAlder = Math.round((dinAlder - 7) * 2);
+            console.log("maximumAlder", maximumAlder);
+
+            if (dinAlder < 15 || dinDate < 15) {
+                console.log("En af partnerne er for unge");
+            } else {
+                if (dinDate >= minimumAlder && dinDate <= maximumAlder) {
+                    console.log("Det er passende");
+                } else if (dinDate < minimumAlder) {
+                    console.log(`Du er ${dinAlder} og din date er ${dinDate}. Din date er ${minimumAlder-dinDate} år for ung.`);
+                } else if (dinDate > maximumAlder) {
+                    console.log(`Du er ${dinAlder} og din date er ${dinDate}. Din date er ${dinDate-maximumAlder} år for gammel.`)
+                }
+
+
+            }
+
+
+
+
+
+
+        }
+        //
+        //            let userAge = document.querySelector("#age1").value;
+        //            let partnerAge = document.querySelector("#age2").value;
+        //            let resultat = partnerAge / 0.5 + 7;
+        //            console.log(resultat);
+        //
+
+
+
+        //            let resultat = `Længden er ${længde} meter og bredden er ${bredde} meter. Arealet er ${areal}`;
+        //            console.log(resultat);
+
+
+
+
+        // if (userAge < partnerAge / 0.5 + 7) { // console.log("Din partner er for ung!"); // } else if (userAge> partnerAge / 0.5 + 7) {
+        // console.log("Din partner er for gammel!");
+        // } else if (userAge == partnerAge / 0.5 + 7) {
+        // console.log("Tallet er rigtigt");
+        // }
+
+    </script>
+</body>
+
+</html>
