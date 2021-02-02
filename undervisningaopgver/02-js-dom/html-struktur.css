@@ -1,0 +1,30 @@
+header,
+article,
+footer {
+    border: 2px solid black;
+    margin-top: 5vw;
+    text-align: center;
+}
+
+section {
+    display: grid;
+}
+
+
+img {
+    width: 100%;
+}
+
+
+@media (min-width: 700px) {
+    section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    article,
+    h2 {
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+}
