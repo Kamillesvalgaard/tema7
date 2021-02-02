@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-struktur</title>
+
+    <style>
+        img {
+            width: 30%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h1>Tro på det...</h1>
+        <img src="img/img1.png" alt="Første billede">
+        <button>Videre</button>
+        <p>Billeder brugt med tilladelse af Rasmus Bregnhøi</p>
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const billede = document.querySelector("img");
+        const billeder = ["img1.png", "img2.png", "img3.png", "img4.png", "img5.png", "img6.png", "img7.png", "img8.png"];
+        let nummer = 0;
+
+
+        function start() {
+            console.log("start");
+
+
+            document.querySelector("button").addEventListener("click", skift);
+
+        }
+
+        function skift() {
+            console.log("billedet skifter nu");
+
+            nummer++;
+
+            billede.src = "img/" + billeder[nummer];
+
+        }
+
+    </script>
+</body>
+
+</html>
