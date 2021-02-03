@@ -8,20 +8,43 @@
 
     <style>
         img {
-            width: 60%;
-            height: 60%;
+            width: 40%;
+
+            /*            height: 60%;*/
         }
 
         article {
-            margin-bottom: 4vw;
+            margin-bottom: 2vw;
             font-family: sans-serif;
             font-size: 2vw;
+            border: solid black 2px;
+            padding: 2vw;
+            display: flex;
+            flex-direction: row;
+            background-color: white;
         }
+
 
         main {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             grid-gap: 20px;
+
+        }
+
+        * {
+            background-color: lightblue;
+        }
+
+        #one {
+            margin-left: 2vw;
+            background-color: white;
+        }
+
+        h2,
+        p {
+            background-color: white;
+
         }
 
     </style>
@@ -33,10 +56,14 @@
 
     <template>
         <article>
+
             <img src="" alt="" class="billede">
-            <h2 class="navn"></h2>
-            <p class="titel"></p>
-            <p class="fødselsdag"></p>
+
+            <section id="one">
+                <h2 class="navn"></h2>
+                <p class="titel"></p>
+                <p class="hobby"></p>
+            </section>
         </article>
     </template>
 
@@ -65,9 +92,9 @@
             json.forEach(person => {
                 const klon = template.cloneNode(true);
                 klon.querySelector(".billede").src = medieurl + person.billede;
-                klon.querySelector(".navn").textContent = person.navn;
+                klon.querySelector(".navn").textContent = person.efternavn;
                 klon.querySelector(".titel").textContent = person.titel;
-                klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+                klon.querySelector(".hobby").textContent = person.hobby;
                 main.appendChild(klon);
 
             })
