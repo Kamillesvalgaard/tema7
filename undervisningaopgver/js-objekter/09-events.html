@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-objekter</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        img {
+            width: 95%;
+        }
+
+        h3 {
+            font-family: sans-serif;
+            font-size: 3vw;
+        }
+
+        h2,
+        p {
+            font-family: sans-serif;
+            font-size: 2vw;
+
+        }
+
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+        }
+
+
+        article {
+            margin-bottom: 4vw;
+            border: solid black 2px;
+            padding: 3vw;
+            /*
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+*/
+        }
+
+        #afspil {
+            border: solid black 1px;
+            padding: 5px;
+            width: 7vw;
+            justify-items: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section id="liste"></section>
+    <template>
+        <article id="filmene">
+            <section>
+                <img src="" alt="">
+            </section>
+            <section>
+                <p id="afspil">AFSPIL</p>
+                <h3></h3>
+                <h2></h2>
+                <p id="land"></p>
+                <p id="min"></p>
+                <p id="år"></p>
+
+            </section>
+        </article>
+    </template>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let film = [{
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/W6dOqabNhHKBPXxxKKEZRA84-360.jpg",
+                "navn": "A Calling",
+                "producer": "Christian Bengtson",
+                "info": [
+                    "Danmark, 2019",
+                    "20 min"
+                ]
+            }, {
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Q8K1pZrOs03Q0IrDkBwGVu5r-360.jpg",
+                "navn": "A Hole In My Heart",
+                "producer": "Mees Peijnenburg",
+                "info": [
+                    "Holland, 2015",
+                    "9 min"
+                ]
+
+            }, {
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/hUd4SdGQ8I23ovxWnGtBz4Ck-360.jpg",
+                "navn": "A Place In The Sun - 110 Years After The Genocide",
+                "producer": "Christian Zipfel",
+                "info": [
+                    "Tyskland, 2018",
+                    "20 min"
+                ]
+
+            }, {
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Zdt2ODEqSVOkNe8nUaSSu8kd-360.jpg",
+                "navn": "A Tower Of Two",
+                "producer": "Jacob Krzysztof",
+                "info": [
+                    "Danmark, 2019",
+                    "21 min"
+                ]
+
+            }, {
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/2iUOgQpixgIQCxyLtY6KiYuU-720.jpg",
+                "navn": "A Worthy Man",
+                "producer": "Kristian Håskjold",
+                "info": [
+                    "Danmark, 2018",
+                    "19 min"
+                ]
+            }, {
+                "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/FE3GG1abinQKHS0yh4xpyiY2-720.jpg",
+                "navn": "Anime",
+                "producer": "Arnaud Brisebois",
+                "info": [
+                    "Canada, 2016",
+                    "12 min"
+                ]
+
+            }
+
+        ]
+
+
+        function start() {
+            console.log("start");
+            console.log("film");
+
+            const container = document.querySelector("#liste");
+            const filmTemplate = document.querySelector("template");
+
+            film.forEach(film => {
+                let klon = filmTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = film.navn;
+                klon.querySelector("h2").textContent = film.producer;
+                klon.querySelector("img").src = film.billede;
+                klon.querySelector("#land").textContent = (`${film.info[0]}`);
+                klon.querySelector("#min").textContent = (` ${film.info[1]}`);
+                container.appendChild(klon);
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>
