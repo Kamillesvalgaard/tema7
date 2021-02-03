@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-objekter</title>
+    <link rel="stylesheet" href="">
+
+</head>
+
+<body>
+    <h1>Biler</h1>
+    <section id="liste"></section>
+    <template>
+        <article id="bilerne">
+            <h2 class="mærke"></h2>
+            <h3 class="model"></h3>
+            <p class="motor"></p>
+            <p class="km"></p>
+            <p>Udstyr:</p>
+            <ul class="udstyr"></ul>
+        </article>
+    </template>
+
+    <script>
+        "use strict";
+
+        const fil = "alleBiler.json";
+
+        async function hentdata(fil) {
+            const resultat = await fetch(fil);
+            const json = await resultat.json();
+            vis(json);
+        }
+
+        function vis(json) {
+            const beholder = document.querySelector("#liste");
+            const skabelon = document.querySelector("template");
+
+            json.forEach(bil => {
+                const klon = skabelon.cloneNode(true).content;
+
+                klon.querySelector(".mærke").textContent = bil.mærke;
+                klon.querySelector(".model").textContent = bil.model;
+                klon.querySelector(".motor").textContent = bil.motor;
+                klon.querySelector(".km").textContent = bil.km;
+
+                bil.emner.forEach(emne => {
+                    klon.querySelector(".udstyr").innerHTML += "<li>" + emne + "</li>"
+                });
+
+                beholder.appendChild(klon);
+            });
+        }
+
+        hentdata(fil);
+
+    </script>
+</body>
+
+</html>
