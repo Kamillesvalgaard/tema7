@@ -7,6 +7,26 @@
     <title>JS-objekter</title>
     <link rel="stylesheet" href="">
 
+    <style>
+        article {
+            border: 2px solid black;
+            padding: 2vw;
+            margin-left: 2vw;
+            margin-bottom: 2vw;
+            width: 40%;
+        }
+
+        h1 {
+            margin-left: 2vw;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -40,11 +60,13 @@
                 const klon = skabelon.cloneNode(true).content;
 
                 klon.querySelector(".mærke").textContent = bil.mærke;
-                klon.querySelector(".model").textContent = bil.model;
-                klon.querySelector(".motor").textContent = bil.motor;
-                klon.querySelector(".km").textContent = bil.km;
+                klon.querySelector(".model").textContent = `Model: ${bil.model}`;
+                klon.querySelector(".motor").textContent = `Motor: ${bil.motor}`;
+                klon.querySelector(".km").textContent = `Km: ${bil.km}`;
 
-                bil.emner.forEach(emne => {
+                console.log("bil", bil);
+
+                bil.udstyr.forEach(emne => {
                     klon.querySelector(".udstyr").innerHTML += "<li>" + emne + "</li>"
                 });
 
@@ -53,8 +75,5 @@
         }
 
         hentdata(fil);
-
     </script>
-</body>
-
-</html>
+</body></html>
