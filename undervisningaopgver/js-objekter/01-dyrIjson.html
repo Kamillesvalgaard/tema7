@@ -14,7 +14,6 @@
             padding: 2vw;
             width: 40vw;
         }
-
     </style>
 </head>
 
@@ -33,11 +32,12 @@
         let container = document.querySelector("#liste");
         let dyrTemplate = document.querySelector("template");
 
-        const fil = "allDyr.json";
+        let json;
+        const fil = "alleDyr.json";
 
         async function hentData(fil) {
             const resultat = await fetch(fil);
-            const json = await resultat.json();
+            json = await resultat.json();
             vis(json);
         }
 
@@ -55,8 +55,5 @@
         }
 
         hentData(fil);
-
     </script>
-</body>
-
-</html>
+</body></html>
