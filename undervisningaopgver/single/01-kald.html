@@ -144,8 +144,8 @@
 
                 if (filter == person.troende || filter == "alle") {
                     const klon = template.cloneNode(true);
+                    klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                     klon.querySelector(".billede").src = medieurl + person.billede;
-                    klon.querySelector(".navn").textContent = person.efternavn;
                     klon.querySelector(".titel").textContent = person.titel;
                     klon.querySelector(".hobby").textContent = person.hobby;
                     klon.querySelector("article").addEventListener("click", () => visDetaljer(person));
