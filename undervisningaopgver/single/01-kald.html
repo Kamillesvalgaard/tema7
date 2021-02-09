@@ -22,6 +22,7 @@
             display: flex;
             flex-direction: row;
             background-color: white;
+            cursor: pointer;
         }
 
 
@@ -139,6 +140,7 @@
             const template = document.querySelector("template").content;
             main.textContent = "";
             personer.forEach(person => {
+                console.log("Troende", person.troende);
 
                 if (filter == person.troende || filter == "alle") {
                     const klon = template.cloneNode(true);
@@ -146,10 +148,15 @@
                     klon.querySelector(".navn").textContent = person.efternavn;
                     klon.querySelector(".titel").textContent = person.titel;
                     klon.querySelector(".hobby").textContent = person.hobby;
+                    klon.querySelector("article").addEventListener("click", () => visDetaljer(person));
                     main.appendChild(klon);
                 }
 
             })
+        }
+
+        function visDetaljer(hvem) {
+            location.href = `02-detalje.html?id=${hvem._id}`;
         }
 
         hentData();
